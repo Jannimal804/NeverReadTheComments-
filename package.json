@@ -1,5 +1,5 @@
 {
-    "name": "never read the comments",
+    "name": "kotaku-scrape",
     "version": "1.0.0",
     "description": "never read the comments",
     "main": "server.js",
