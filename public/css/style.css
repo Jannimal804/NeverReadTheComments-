@@ -1,0 +1,22 @@
+body {
+    background: pink;
+}
+
+.nav-wrapper {
+    background: yellow;
+  }
+  
+ p, .brand-logo {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .card-title {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+    color: blue;
+  }
+  
+  
+  
+  .btn {
+    background: rgb(214, 207, 207);
+  }
