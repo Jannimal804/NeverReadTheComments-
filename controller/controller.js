@@ -13,7 +13,7 @@ var db = require("../models");
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/NeverReadTheComments";
 
 // Connect to the Mongo DB
-mongoose.Promise = Promise;
+
 mongoose.connect(MONGODB_URI);
 
 var router = express.Router();
