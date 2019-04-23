@@ -4,7 +4,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 
-var CommentSchema = new Schema({
+var NoteSchema = new Schema({
   nickname: {
       type: String,
       default: "???"
@@ -16,6 +16,6 @@ var CommentSchema = new Schema({
   }
 });
 
-var Comment = mongoose.model("Comment", CommentSchema);
+var Note = mongoose.model("Note", NoteSchema);
 
-module.exports = Comment;
+module.exports = Note;

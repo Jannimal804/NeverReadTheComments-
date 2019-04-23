@@ -7,7 +7,8 @@ var cheerio = require("cheerio")
 var request = require("request-promise")
 
 
-// database models
+
+// DB models
 var db = require("../models");
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/NeverReadTheComments";
@@ -29,10 +30,10 @@ router.get("/", function(req, res) {
     })
 })
 
-//get comments
-router.get("/comment/:id", function(req, res){
+//get notes
+router.get("/note/:id", function(req, res){
     db.Article.findById(req.params.id)
-    .populate("comment")
+    .populate("note")
     .then(function(data){
         res.json(data)
     })
@@ -42,11 +43,11 @@ router.get("/comment/:id", function(req, res){
       });
 })
 
-router.post("/comment/:id", function(req, res){
-    db.Comment.create(req.body)
+router.post("/note/:id", function(req, res){
+    db.Note.create(req.body)
     .then(function(data) {
 
-      return db.Article.findByIdAndUpdate(req.params.id, { $push: { comment: data._id } }, { new: true });
+      return db.Article.findByIdAndUpdate(req.params.id, { $push: { note: data._id } }, { new: true });
     })
     .then(function(updatedArticle) {
 
@@ -59,7 +60,7 @@ router.post("/comment/:id", function(req, res){
     });
 })
 
-// scrape route for articles on jalopnik.com
+// Scrape Route 
 router.get("/scrape", function (req,res){
     
     request("https://kotaku.com/", function(error, response, html) {
@@ -85,7 +86,7 @@ router.get("/scrape", function (req,res){
 
             console.log(newArticle)
             
-            // save results
+            // saving results
             if (title && link && summary){
                 db.Article.create(newArticle)
                 .catch(function(err){
